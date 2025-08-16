@@ -13,7 +13,7 @@ endef
 
 $(foreach cmd,$(TERRAFORM_CMDS),$(eval $(call TF_TARGET,$(cmd))))
 
-ANSIBLE_CMDS = install-deps deploy prepare redmine
+ANSIBLE_CMDS = install-deps deploy prepare redmine datadog
 
 define ANS_TARGET
 a-$(1):

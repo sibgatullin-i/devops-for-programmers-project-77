@@ -15,5 +15,5 @@ output "alb_external_ip" {
 }
 
 output "datadog_monitor_url" {
-  value = "https://app.datadoghq.eu/monitors/${datadog_monitor.HTTP_Check_2.id}"
+  value = "https://app.datadoghq.eu/monitors/${datadog_monitor.HTTP_Check_Devops3.id}"
 }
