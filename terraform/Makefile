@@ -1,6 +1,9 @@
 init:
 	terraform init -backend-config=secret.backend.tfvars
 
+i-upgrade:
+	terraform init -upgrade -backend-config=secret.backend.tfvars
+
 i-migrate:
 	terraform init -migrate-state -backend-config=secret.backend.tfvars
 

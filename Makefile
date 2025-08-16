@@ -4,7 +4,7 @@ encrypt:
 decrypt:
 	ansible-vault decrypt terraform/secret.auto.tfvars ansible/group_vars/webservers/secrets.yml --vault-password-file .vault-password
 
-TERRAFORM_CMDS = init i-migrate plan apply destroy show graph
+TERRAFORM_CMDS = init i-migrate i-upgrade plan apply destroy show graph
 
 define TF_TARGET
 t-$(1):
