@@ -1,0 +1,37 @@
+variable "yc_token" {
+  description = "OAuth-token"
+  type        = string
+  sensitive   = true
+}
+
+variable "yc_cloud_id" {
+  type        = string
+  sensitive   = true
+}
+
+variable "yc_folder_id" {
+  type        = string
+  sensitive   = true
+}
+
+variable "yc_zone" {
+  description = "availability zone"
+  type        = string
+  sensitive   = true
+}
+
+variable "yc_service_account_id" {
+  type        = string
+  sensitive   = true
+}
+
+variable "vm_login" {
+  description = "VM user login"
+  type        = string
+  sensitive   = true
+}
+
+variable "ssh_pub_key_path" {
+  type        = string
+  sensitive   = true
+}
