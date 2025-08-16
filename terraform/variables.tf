@@ -50,3 +50,13 @@ variable "db_password" {
   type        = string
   sensitive   = true
 }
+
+variable "tls_fullchain_pem_path" {
+  type        = string
+  sensitive   = true
+}
+
+variable "tls_privkey_pem_path" {
+  type        = string
+  sensitive   = true
+}

@@ -2,6 +2,8 @@ resource "yandex_mdb_postgresql_cluster" "postgresql588" {
   name        = "postgresql588"
   environment = "PRODUCTION"
   network_id  = yandex_vpc_network.devops3-network.id
+  security_group_ids = [yandex_vpc_security_group.devops3-sg-sql.id]
+  deletion_protection = false
 
   maintenance_window {
     type = "WEEKLY"
@@ -16,35 +18,23 @@ resource "yandex_mdb_postgresql_cluster" "postgresql588" {
       disk_type_id       = "network-hdd"
       disk_size          = 10
     }
-    
-    access {
-      data_lens = false
-      web_sql   = false
-      serverless = false
-    }
   }
 
   host {
     zone             = var.yc_zone
+    name             = "PostgreSQL"
     subnet_id        = yandex_vpc_subnet.devops3-subnet.id
     assign_public_ip = false
   }
-
-  security_group_ids = [yandex_vpc_security_group.devops3-sg-sql.id]
-  deletion_protection = false
-
-  depends_on = [yandex_vpc_subnet.devops3-subnet]
 }
 
 resource "yandex_mdb_postgresql_user" "db_user" {
   cluster_id = yandex_mdb_postgresql_cluster.postgresql588.id
   name       = var.db_user
   password   = var.db_password
-
-  depends_on = [yandex_mdb_postgresql_cluster.postgresql588]
 }
 
-resource "yandex_mdb_postgresql_database" "db" {
+resource "yandex_mdb_postgresql_database" "db_name" {
   cluster_id = yandex_mdb_postgresql_cluster.postgresql588.id
   name       = var.db_name
   owner      = yandex_mdb_postgresql_user.db_user.name

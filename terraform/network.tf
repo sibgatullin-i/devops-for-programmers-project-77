@@ -9,6 +9,12 @@ resource "yandex_vpc_subnet" "devops3-subnet" {
   network_id      = yandex_vpc_network.devops3-network.id
   v4_cidr_blocks  = ["192.168.0.0/24"]
   folder_id       = var.yc_folder_id
+}
 
-  depends_on = [yandex_vpc_network.devops3-network]
+resource "yandex_vpc_address" "devops3-alb-ip" {
+  name      = "devops3-alb-ip"
+  
+  external_ipv4_address {
+    zone_id = var.yc_zone
+  }
 }

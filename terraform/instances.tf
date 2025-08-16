@@ -45,7 +45,7 @@ resource "yandex_compute_instance" "app-server-1" {
     preemptible = true  # прерываемая ВМ
   }
 
-  depends_on = [yandex_vpc_security_group.devops3-sg-appservers]
+  depends_on = [yandex_mdb_postgresql_cluster.postgresql588, yandex_mdb_postgresql_database.db_name]
 }
 
 resource "yandex_compute_instance" "app-server-2" {
@@ -95,5 +95,5 @@ resource "yandex_compute_instance" "app-server-2" {
     preemptible = true  # прерываемая ВМ
   }
 
-  depends_on = [yandex_vpc_security_group.devops3-sg-appservers]
+  depends_on = [yandex_mdb_postgresql_cluster.postgresql588, yandex_mdb_postgresql_database.db_name]
 }

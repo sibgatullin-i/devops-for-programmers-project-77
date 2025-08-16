@@ -1,3 +1,7 @@
+output "alb_external_ip" {
+  value = yandex_vpc_address.devops3-alb-ip.external_ipv4_address[0].address
+}
+
 output "app_server_1_ip" {
   value = yandex_compute_instance.app-server-1.network_interface.0.nat_ip_address
 }
@@ -7,5 +11,5 @@ output "app_server_2_ip" {
 }
 
 output "postgresql_host" {
-  value       = yandex_mdb_postgresql_cluster.postgresql588.host[0].fqdn
+  value = yandex_mdb_postgresql_cluster.postgresql588.host[0].fqdn
 }
