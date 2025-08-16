@@ -1,8 +1,8 @@
 encrypt:
-	ansible-vault encrypt terraform/secret.auto.tfvars ansible/group_vars/webservers/secrets.yml --vault-password-file .vault-password
+	ansible-vault encrypt terraform/secret.auto.tfvars terraform/secret.backend.tfvars ansible/inventory.ini ansible/group_vars/webservers/secrets.yml --vault-password-file .vault-password
 
 decrypt:
-	ansible-vault decrypt terraform/secret.auto.tfvars ansible/group_vars/webservers/secrets.yml --vault-password-file .vault-password
+	ansible-vault decrypt terraform/secret.auto.tfvars terraform/secret.backend.tfvars ansible/inventory.ini ansible/group_vars/webservers/secrets.yml --vault-password-file .vault-password
 
 TERRAFORM_CMDS = init i-migrate i-upgrade plan apply destroy show graph
 
