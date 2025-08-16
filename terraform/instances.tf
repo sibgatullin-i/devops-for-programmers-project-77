@@ -22,7 +22,7 @@ resource "yandex_compute_instance" "app-server-1" {
   network_interface {
     subnet_id           = yandex_vpc_subnet.devops3-subnet.id
     nat                 = true
-    security_group_ids  = [yandex_vpc_security_group.devops3-appservers-sg.id]
+    security_group_ids  = [yandex_vpc_security_group.devops3-sg-appservers.id]
   }
 
   metadata = {
@@ -45,7 +45,7 @@ resource "yandex_compute_instance" "app-server-1" {
     preemptible = true  # прерываемая ВМ
   }
 
-  depends_on = [yandex_vpc_security_group.devops3-appservers-sg]
+  depends_on = [yandex_vpc_security_group.devops3-sg-appservers]
 }
 
 resource "yandex_compute_instance" "app-server-2" {
@@ -72,7 +72,7 @@ resource "yandex_compute_instance" "app-server-2" {
   network_interface {
     subnet_id           = yandex_vpc_subnet.devops3-subnet.id
     nat                 = true
-    security_group_ids  = [yandex_vpc_security_group.devops3-appservers-sg.id]
+    security_group_ids  = [yandex_vpc_security_group.devops3-sg-appservers.id]
   }
 
   metadata = {
@@ -92,8 +92,8 @@ resource "yandex_compute_instance" "app-server-2" {
   }
 
   scheduling_policy {
-    preemptible = true  
+    preemptible = true  # прерываемая ВМ
   }
 
-  depends_on = [yandex_vpc_security_group.devops3-appservers-sg]
+  depends_on = [yandex_vpc_security_group.devops3-sg-appservers]
 }

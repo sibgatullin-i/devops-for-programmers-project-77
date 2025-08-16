@@ -5,3 +5,7 @@ output "app_server_1_ip" {
 output "app_server_2_ip" {
   value = yandex_compute_instance.app-server-2.network_interface.0.nat_ip_address
 }
+
+output "postgresql_host" {
+  value       = yandex_mdb_postgresql_cluster.postgresql588.host[0].fqdn
+}
