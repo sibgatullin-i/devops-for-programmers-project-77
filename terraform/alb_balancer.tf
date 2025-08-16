@@ -18,14 +18,14 @@ resource "yandex_alb_backend_group" "devops3-bg" {
   http_backend {
     name                   = "devops3-backend"
     weight                 = 1
-    port                   = 80
+    port                   = 3000
     target_group_ids       = [yandex_alb_target_group.devops3-tg.id]
     healthcheck {
       timeout              = "1s"
       interval             = "1s"
       healthy_threshold    = 1
       unhealthy_threshold  = 1
-      healthcheck_port     = 80
+      healthcheck_port     = 3000
       http_healthcheck {
         path = "/"
       }

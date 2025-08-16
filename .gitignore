@@ -2,3 +2,5 @@ secret.*
 .vault-password
 .terraform
 TLS
+inventory.ini
+secrets.yml
